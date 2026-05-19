@@ -42,8 +42,17 @@ if(process.env.NODE_ENV === "production"){
     });
 }
 
-connectDB().then(()=>{
-    app.listen(PORT,() => {
-        console.log(`Server started on PORT : ${PORT}`);
+// connectDB().then(()=>{
+//     app.listen(PORT,() => {
+//         console.log(`Server started on PORT : ${PORT}`);
+//     });
+// });
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server started on PORT : ${PORT}`);
     });
-});
+  })
+  .catch((err) => {
+    console.log("MongoDB connection failed:", err);
+  });
